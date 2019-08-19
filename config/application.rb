@@ -29,5 +29,10 @@ module ChatApp
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.i18n.default_locale = :ja
+    config.time_zone = 'Asia/Tokyo'
+    config.active_record.default_timezone = :local
+    config.action_mailer.default_url_options = { host: 'localhost:3000' }
+    config.action_mailer.delivery_method = :letter_opener_web
   end
 end

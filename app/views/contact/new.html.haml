@@ -1,0 +1,19 @@
+%h1 お問い合わせ
+
+- if @contact.errors.any?
+  .alert
+    %ul
+      - @contact.errors.full_messages.each do |message|
+        %li= message
+
+%p お問い合わせはこちらのフォームから
+= form_for @contact, url: contact_confirm_path do |f|
+  .form-group
+    .form-title= f.label :email, "メールアドレス"
+    .form-element= f.text_field :email, size: '30', class: 'form-controll'
+
+  .form-group
+    .form-title= f.label :message, "お問い合わせ内容"
+    .form-element= f.text_area :message, size: '30x5', class: 'form-controll'
+
+  = f.submit '確　認'

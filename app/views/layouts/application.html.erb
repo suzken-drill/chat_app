@@ -10,6 +10,13 @@
   </head>
 
   <body>
+    <%= render "layouts/header" %>
+
+    <%= flash[:notice] if flash[:notice].present? %>
+    <%= flash[:error] if flash[:error].present? %>
+
     <%= yield %>
+
+    <%= render "layouts/footer" %>
   </body>
 </html>
