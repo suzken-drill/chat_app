@@ -50,6 +50,7 @@ test:
 #
 production:
   <<: *default
-  database: us-cdbr-iron-east-02.cleardb.net/heroku_f3ff170c73791a9
-  username: b3d6003046f3ec
+  database: chat_app_production
+  host: <%= ENV['DATABASE_URL'] %>
+  username: <%= ENV['DATABASE_USER'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
