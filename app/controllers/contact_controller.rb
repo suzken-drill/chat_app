@@ -4,14 +4,14 @@ class ContactController < ApplicationController
   end
 
   def create
-  	@contact = Contact.new(contact_params)
-  	if @contact.save
+    @contact = Contact.new(contact_params)
+    if @contact.save
       ContactMailer.contact_mail(@contact).deliver
       redirect_to root_path, notice: "お問い合わせが正常に送信されました"
-  	else
-  	  flash.now[:error] = "お問い合わせの送信に失敗しました"
+    else
+      flash.now[:error] = "お問い合わせの送信に失敗しました"
       render action: "new"
-  	end
+    end
   end
 
   def confirm

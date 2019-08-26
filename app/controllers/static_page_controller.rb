@@ -1,5 +1,6 @@
 class StaticPageController < ApplicationController
   def index
+    @index_form = IndexForm.new
   end
 
   def help

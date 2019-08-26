@@ -1,2 +1,16 @@
-%h1 トップページ
-%p Find me in app/views/static_page/index.html.haml
+.jumbotron
+  %h1.display-4 見知らぬ誰かとランダムチャット
+  %p
+    このサービスは日本中からランダムに選ばれた誰かと匿名でチャットできるサービスです。
+    %br
+    今すぐ「チャットを開始する」ボタンを押しておしゃべりしよう☆
+    %br
+    ※出会い系サイトではありません。
+
+  #login_form{style: "text-align:center;"}
+    = form_tag login_path, method: "GET" do
+      .form-group
+        = text_field_tag :name, "", size: 30, placeholder: "表示名を入力", class: "form-control input-lg"
+        .text-muted ※個人を特定できない表示名を入力してください
+      = submit_tag "チャットを開始する", class: "btn btn-danger btn-lg"
+

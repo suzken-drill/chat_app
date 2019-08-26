@@ -1,11 +1,11 @@
-#footer
-  %ul
-    %li= link_to "トップページ", root_path
-    %li= link_to "運営者紹介", owner_path
-    %li= link_to "このサイトについて", about_path
-    %li= link_to "ご利用規約", rule_path
-    %li= link_to "プライバシー・ポリシー", privacy_path
-    %li= link_to "ヘルプ", help_path
-    %li= link_to "お問い合わせ", contact_path
-  #copyright
-    %p Copyright &copy; 2019 Drill Inc. All Rights Reserved.
+%footer.footer
+  .container
+    %ul.breadcrumb
+      %li.breadcrumb-item= link_to "トップページ", root_path
+      %li.breadcrumb-item= link_to "運営者紹介", owner_path
+      %li.breadcrumb-item= link_to "このサイトについて", about_path
+      %li.breadcrumb-item= link_to "ご利用規約", rule_path
+      %li.breadcrumb-item= link_to "プライバシー・ポリシー", privacy_path
+      %li.breadcrumb-item= link_to "ヘルプ", help_path
+      %li.breadcrumb-item= link_to "お問い合わせ", contact_path
+    %p.copyright Copyright &copy; 2019 Drill Inc. All Rights Reserved.

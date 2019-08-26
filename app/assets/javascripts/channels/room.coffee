@@ -6,7 +6,20 @@ App.room = App.cable.subscriptions.create "RoomChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    $('#messages').append data['message']
+    if 'message' of data && $('#messages').length
+      $('#messages').append data['message']
+      if $('.message:last > p').hasClass($(".comment .current_id").val())
+        $('.message:last > p').addClass("own")
+      else
+        $('.message:last > p').addClass("other")
+
+    if 'member' of data && $('#member').length
+      entrant = $('#member > .entrant').html()
+      $('#member').html data['member']
+      if $('#member > .entrant').html() != "" && entrant == ""
+        alert "チャットが開始されました"
+      if $('#member > .entrant').html() == "" && entrant != ""
+        alert "相手が退室しました"
 
   speak: (message) ->
     @perform 'speak', message: message
