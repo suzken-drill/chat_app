@@ -1,0 +1,23 @@
+- content_for :header_script do
+  = javascript_include_tag 'channels/room.js'
+  = javascript_include_tag 'room.js'
+
+%h1 チャットルーム
+
+#member
+  = render partial: "room/member", locals: {owner: @owner, entrant: @entrant}
+
+#messages
+  = render partial: "messages/message", collection: @messages, locals: {current_id: current_user.id}
+
+%form.comment
+  %label 「enter」でコメントされます:
+  %br
+  .form-group
+    %input{ type: "text", "data-behavior": "room_speaker", class: "form-control" }
+  %input{ type: "hidden", name: "current_id", class: "current_id" ,value: current_user.id}
+
+%hr
+
+= form_tag(logout_path, method: "GET", class: "exit") do
+  = submit_tag("退出する", class: "btn btn-warning")

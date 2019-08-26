@@ -1,2 +1,8 @@
 .message
-  %p= message.content
+  - if current_user.present?
+    - if current_user.id == message.user_id
+      %p.own{class: message.user_id}= message.content
+    - else
+      %p.other{class: message.user_id}= message.content
+  - else
+    %p{class: message.user_id}= message.content

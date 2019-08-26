@@ -1,15 +1,42 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ChatApp</title>
+    <title>Pair Chat</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Lobster|Patua+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/jpn.css@latest/dist/bootstrap/jpn.min.css">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield :header_script %>
+
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "layouts/header" %>
+
+    <div class="container">
+      <% if flash[:notice].present? %>
+        <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= flash[:notice].html_safe %>
+        </div>
+      <% end %>
+      <% if flash[:error].present? %>
+        <div class="alert alert-danger">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= flash[:error].html_safe %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="contents">
+      <div class="container">
+        <%= yield %>
+      </div>
+    </div>
+
+    <%= render "layouts/footer" %>
   </body>
 </html>

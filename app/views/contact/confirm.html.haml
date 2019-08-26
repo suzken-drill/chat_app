@@ -1,0 +1,15 @@
+%h1 お問い合わせ（確認）
+%p 内容に間違いなどないかご確認ください
+= form_for @contact, url: contact_path do |f|
+  #form-group
+    メールアドレス：
+    = @contact.email
+    = f.hidden_field :email
+
+  #form-group
+    お問い合わせ内容：
+    %br
+    = @contact.message.gsub(/(\r\n|\r|\n)/, "<br />").html_safe
+    = f.hidden_field :message
+
+  = f.submit '送　信'
