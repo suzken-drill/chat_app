@@ -14,12 +14,12 @@ App.room = App.cable.subscriptions.create "RoomChannel",
         $('.message:last > p').addClass("other")
 
     if 'member' of data && $('#member').length
-      entrant = $('#member > .entrant').html()
+      entrant = $('#member .entrant').html()
       $('#member').html data['member']
-      if $('#member > .entrant').html() != "" && entrant == ""
+      if $('#member .entrant').html() != "" && entrant == ""
         alert "チャットが開始されました"
-      if $('#member > .entrant').html() == "" && entrant != ""
-        alert "相手が退室しました"
+      # if $('#member .entrant').html() == "" && entrant != ""
+      #   alert "相手が退室しました"
 
   speak: (message) ->
     @perform 'speak', message: message
