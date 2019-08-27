@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   before_create :get_session_key
 
+  has_many :messages
   belongs_to :room
 
   validates :name, presence: true
