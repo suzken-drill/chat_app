@@ -5,7 +5,6 @@ class SessionController < ApplicationController
     @index_form = IndexForm.new(index_params)
     unless @index_form.valid?
       error_message = ""
-      Rails.logger.debug(@index_form.errors.inspect)
       @index_form.errors.messages.each do |key, values|
         values.each do |value|
           error_message += "・#{value}<br>"

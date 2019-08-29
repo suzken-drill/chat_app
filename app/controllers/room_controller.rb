@@ -8,8 +8,6 @@ class RoomController < ApplicationController
     users = User.room_users(params[:id])
     @owner = users[:owner]
     @entrant = users[:entrant]
-    Rails.logger.debug("owner ---" + @owner.inspect)
-    Rails.logger.debug("entrant ---" + @entrant.inspect)
   end
 
   private
@@ -22,7 +20,6 @@ class RoomController < ApplicationController
    	  end
     end
     def render_member
-      Rails.logger.debug("params_id --- " + params[:id])
       users = User.room_users(params[:id])
       MemberBroadcastJob.perform_later(users[:owner], users[:entrant]) if users[:owner].present? || users[:entrat].present?
     end
